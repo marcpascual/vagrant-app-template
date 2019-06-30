@@ -28,4 +28,4 @@ else
 	echo '#.init' >> Vagrantfile
 fi
 
-vagrant up
+vagrant up && vagrant ssh
