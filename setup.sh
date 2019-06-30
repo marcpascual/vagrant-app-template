@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# do not do anything if .cloneonly file is found
+if [ -f '.cloneonly' ]; then
+	echo "not running this script on this directory"
+	exit 0
+fi
+
 # check if string marker is already there
 if [ ! -z "`grep '#.init' Vagrantfile`" ]; then
 	echo "skipping init, Vagrantfile template is already initiazlied"
