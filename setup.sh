@@ -8,6 +8,7 @@ if [ -f '.cloneonly' ]; then
 	exit 0
 fi
 
+echo "running prechecks..."
 # check if string marker is already there
 if [ ! -z "`grep '#.init' Vagrantfile`" ]; then
 	echo "skipping init, Vagrantfile template is already initiazlied"
@@ -28,4 +29,10 @@ else
 	echo '#.init' >> Vagrantfile
 fi
 
-vagrant up && vagrant ssh
+echo
+echo "pre-checks done. Bringing up machine(s)..."
+vagrant up
+
+echo
+echo "machines are up. Dropping you to a shell..."
+vagrant ssh
