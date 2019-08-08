@@ -42,6 +42,8 @@ Vagrant.configure("2") do |config|
     hostnamectl set-hostname $1
 		sed -i 's/^PasswordAuthentication no$/PasswordAuthentication yes/' /etc/ssh/sshd_config
 		systemctl restart sshd
+		unlink localtime
+		ln -s /usr/share/zoneinfo/Asia/Singapore /etc/localtime
   SHELL
 
   # make sure that reload plugin is installed first
